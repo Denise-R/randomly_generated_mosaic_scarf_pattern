@@ -1,0 +1,123 @@
+import random
+import re
+from itertools import groupby
+
+final_even=[]
+final_odd=[]
+for k in range(4):
+    list = []
+    for i in range(0, 6):
+        n = random.randrange(0, 2)
+        list.append(n)
+    print(list)
+
+    odd_row1 = []
+    for i in list:
+        if i == 0:
+            odd_row1.append("k")
+        else:
+            odd_row1.append("sl")
+    print(odd_row1)
+
+    count1 = [sum(1 for key in g) for key, g in groupby(odd_row1)]
+    print(count1)
+
+    count2 = []
+    for i in count1:
+        i = i * 3
+        count2.append(i)
+    print(count2)
+
+    condensed_odd_row1 = []
+    if odd_row1[0] == 'k':
+        print("k is first")
+        for i in range(0, len(count2)):
+            if i % 2 == 0:
+                condensed_odd_row1.append(str(count2[i]) + "k")
+            else:
+                condensed_odd_row1.append(str(count2[i]) + "sl")
+    else:
+        print("sl is first")
+        for i in range(0, len(count2)):
+            if i % 2 == 0:
+                condensed_odd_row1.append(str(count2[i]) + "sl")
+            else:
+                condensed_odd_row1.append(str(count2[i]) + "k")
+
+    con_odd_row1 = condensed_odd_row1.copy()
+    print(con_odd_row1)
+    final_odd.append(con_odd_row1)
+    condensed_odd_row1.reverse()
+    con_even_row1 = []
+    for i in condensed_odd_row1:
+        if re.search("k$", i):
+            con_even_row1.append(i.replace('k', 'p'))
+        else:
+            con_even_row1.append(i.replace('sl', 'sl'))
+    print(con_even_row1)
+    final_even.append(con_even_row1)
+
+filename = "knit_mosaic_pattern.txt"
+with open(filename, 'w') as f:
+    f.write('Knit Mosaic Scarf Pattern\n\n')
+    f.write("This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.\n\n")
+    f.write("This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.\n"
+            "There are 24^2 (576) different pattern combinations that can be generated from this code!!.\n\n")
+    f.write("Materials\n"
+            "\t-255 yards worsted yarn (4) for the main color\n"
+            "\t-255 yards worsted yarn (4) for the contrast color\n"
+            "\t-US 8 (5mm) needles\n"
+            "\t-Stitch markers\n"
+            "\t-Tapestry needle\n\n")
+    f.write("Abbreviations\n"
+            "\t-CC: Contrast Color\n"
+            "\t-CO: Cast on\n"
+            "\t-k: Knit\n"
+            "\t-MC: Main Color\n"
+            "\t-p: purl\n"
+            "\t-pm: Place Marker\n"
+            "\t-pwise: Purlwise\n"
+            "\t-wyib: With Yarn in Back\n"
+            "\t-wyif: With Yarn in Front\n\n")
+    f.write("Size\n"
+            "\tCreates a 72 by 20 inch rectangular scarf once washed and blocked.\n\n")
+    f.write("Gauge\n"
+            "\t18 stitches by 24 rows = 4 inch square\n\n")
+    f.write("Instructions\n"
+            "\tCasting On\n"
+            "\t\tUsing US 8 needles, CO 90 stitches in MC.\n"
+            "\tRepeating Pattern\n"
+            "\t\tRow 1 (MC): "+str(final_odd[0])+" pm and repeat to end of row.\n"
+            "\t\t\t\t* For all odd rows, slip yarn pwise wyib * \n"
+            "\t\tRow 2 (MC): "+str(final_even[0])+" Repeat.\n"
+            "\t\t\t\t* For all even rows, slip yarn pwise wyif * \n"
+            "\t\tRows 3-4: Repeat rows 1-2.\n"
+            "\t\tRow 5 (CC): "+str(final_odd[1])+" Repeat.\n"
+            "\t\tRow 6 (CC): "+str(final_even[1])+" Repeat.\n"
+            "\t\tRows 7-8: Repeat rows 5-6, 2 times\n"
+            "\t\tRow 9 (MC): "+str(final_odd[2])+" Repeat.\n"
+            "\t\tRow 10 (MC): "+str(final_even[2])+" Repeat.\n"
+            "\t\tRows 11-12: Repeat rows 9-10, 2 times\n"
+            "\t\tRow 13 (CC): "+str(final_odd[3])+" Repeat.\n"
+            "\t\tRow 14 (CC): "+str(final_even[3])+" Repeat.\n"
+            "\t\tRows 15-16: Repeat rows 13-14, 2 times\n"
+            "\t\tRows 17-432: Repeat rows 1-16, 27 times\n"
+            "\tBinding Off\n"
+            "\t\tStep 1: Knit 2 stitches"
+            "\t\tStep 2: Move those 2 stitches back to the other needle.\n"
+            "\t\tStep 3: Knit the 2 stitches together\n"
+            "\t\tStep 4: Knit 1 stitch\n"
+            "\t\tStep 5: Repeat steps 2-4 until there is only one stitch left.\n"
+            "\t\tStep 6: Cut your yarn leaving a ~5 inch tail and pull it through the last stitch.\n"
+            "\t\t\t\tThis will create a knot and prevent your scarf from unraveling.\n"
+            "\t\tStep 7: Using the tapestry needle work in all any ends.\n"
+            "\t\tStep 8: Wash and block you scarf :)\n"
+            "\tAdding Fringe (optional)\n"
+            "\t\tStep 1: Cut 4, 8 inch strands of yarn\n"
+            "\t\tStep 2: Holding the 4 strands together, use the crochet hook to pull the center of each\n"
+            "\t\t\t\tstrand through a stitch along the bottom/top of the scarf. This will create a loop.\n"
+            "\t\tStep 3: Pull the fridge ends through the loop, and tighten\n"
+            "\t\tStep 4: Trim fringe ends to desired length\n"
+            "\t\tStep 5: Repeat steps 1-4 to add additional fringe wherever desired\n\n")
+    f.write("Coded by: Denise Rauschendorfer (2022)\n")
+f.close()
