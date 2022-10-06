@@ -14,7 +14,7 @@ The following code was executed using Python 3.10.
 
 ## __Creating a Written Pattern__
 
-###__Section 1:__
+### __Section 1:__
 In order to create a randomly generated written pattern, the modules 'random' and 're' need to be imported. Additionally, the operation 'groupby' in the module 'itertools' is also required. 
 
 This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">section 5</span>, and are needed for the code in <span style="color:orange">sections 2-5</span> to run without resulting in an error.
@@ -28,7 +28,7 @@ final_even=[]
 final_odd=[]
 ```
 
-###__Section 2:__
+### __Section 2:__
 This section of code specifies the type of stich needed in one row of the repeated rectangular block. Each 4 by 2.6 inch rectangular block is composed of 18 stiches(x axis) and 16 rows(y axis). In order for the pattern created to show up best on a scarf, each row of the rectangular block is broken up into 6 different sections(18 stiches/6 = 3 stiches per section). Therefore, each row of the rectanular block contains only 6 stiches of interest. To specify the type of stitch for the 6 stitches of interest, the following steps are taken:
 1. A list titled <span style="color:blue">list</span> is created.
 2. A for loop that repeats 6 times is created. 
@@ -54,7 +54,7 @@ print(odd_row1)
 ```
 
 
-###__Section 3:__
+### __Section 3:__
 In this section of code, the list created in <span style="color:orange">section 2</span> named <span style="color:blue">odd_row1</span> is simiplified so that consecutive duplicates are grouped together. The nuber of stiches is then multiplied by 3 to represent the total nuber of stiches in one row of the repeated rectangular block. 
 *Note: one row contains 18 stiches in 6 sections/groups of 3*
 
@@ -76,7 +76,7 @@ print(count2)
 ```
 
 
-###__Section 4:__
+### __Section 4:__
 In this section of code, the list <span style="color:blue">count2</span> created in <span style="color:orange">sections 3</span> is combined with the list <span style="color:blue">odd_row1</span> created in <span style="color:orange">sections 2</span> to make a condensed 18 stitch row.
 
 To accomplish this, the following steps are taken:
@@ -104,7 +104,7 @@ else:
 ```
 
 
-###__Section 5:__
+### __Section 5:__
 The 16 different rows of each rectangular block are also broken up into 4 different sections (16 rows/4 = 4 rows per section) for the pattern to be visually appealing. When knitting on straight needles, every odd row you knit will be the front of the project and every even row will be the back of the project. This means that the same type of stitch(knit, purl, etc.) on an odd row will look different on an even row. This will cause a problem for our pattern when we try to repeat a row 4 times. To correct this, we need to make a front row (odd) and back row (even). Therefore, a front and back row will be repeated twice within each 4 row section of the repeated rectangular block.  
 In <span style="color:orange">sections 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stich should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 4 row repeated section look uniform. 
 
@@ -133,11 +133,11 @@ final_even.append(con_even_row1)
 ```
 
 
-###__Section 6:__
+### __Section 6:__
 To create the 4 different row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">sections 2-5</span> 4 times. 
 
 
-###__Section 7:__
+### __Section 7:__
 In this section of code,
 ```
 filename = "knit_mosaic_pattern.txt"
