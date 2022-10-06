@@ -3,7 +3,7 @@ Denise Rauschendorfer
 9/15/2022
 
 
-## Randomly Generated Mosaic Scarf Pattern
+# __Randomly Generated Mosaic Scarf Pattern__
 
 This repository contains a code that can be run using python to randomly generate a two-color, knitted mosaic scarf pattern.
 The pattern created will automatically be written into a .txt file titled "<span style="color:blue">knit_mosaic_pattern.txt</span>".
@@ -213,3 +213,7 @@ with open(filename, 'w') as f:
 f.close()
 ```
 
+
+## __Creating a Graphic Pattern__
+
+### __Section 8:__
