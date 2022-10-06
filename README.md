@@ -118,8 +118,8 @@ To accomplish this, the following steps are taken:
 3. To begin creating the matching even row, the order of the values in <span style="color:blue">condensed_odd_row1</span> is reversed to match how the stiches on the knitting needles will be configured on an even or "backwards" rows. 
 4. A list titled <span style="color:blue">con_even_row1</span> is created.
 5. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> is created.
-6. Within the for loop, an if/else statement is used. Using regular expressions to search determine if the i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> contains either a 'k' or 'sl', the i<sup>th</sup> item is replaced with a 'p' or remains 'sl'. This new value is then added to <span style="color:blue">con_even_row1</span>. Once this process has repeated for all the items in <span style="color:blue">condensed_odd_row1</span>, the for loop is broken.
-7. The list <span style="color:blue">con_even_row1</span> is then added to the list <span style="color:blue">final_even</span> created in <span style="color:orange">section 2</span>.
+6. Within the for loop, an if/else statement is used. Using regular expressions to determine if the i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> contains either a 'k' or 'sl', the i<sup>th</sup> item is replaced with a 'p' or remains 'sl'. This new value is then added to <span style="color:blue">con_even_row1</span>. Once this process has repeated for all the items in <span style="color:blue">condensed_odd_row1</span>, the for loop is broken.
+7. The list <span style="color:blue">con_even_row1</span> is then added to the list <span style="color:blue">final_even</span> created in <span style="color:orange">section 1</span>.
 
 ```
 con_odd_row1 = condensed_odd_row1.copy()
