@@ -138,11 +138,12 @@ final_even.append(con_even_row1)
 
 
 ### __Section 6:__
-To create the 4 different row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">sections 2-5</span> 4 times. 
+To create the 4 different row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">sections 2-5</span>, 4 times. 
 
 
 ### __Section 7:__
 In this section, a txt file named "<span style="color:blue">knit_mosaic_pattern.txt</span>" is created and populated with directions that corrolate to the values in <span style="color:blue">final_odd</span> and <span style="color:blue">final_even</span> from <span style="color:orange">section 7</span>. 
+
 *Note: A new "<span style="color:blue">knit_mosaic_pattern.txt</span>" file will be created/overwritten each time the code is run.*
 
 ```
