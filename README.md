@@ -61,7 +61,7 @@ In this section of code, the list created in <span style="color:orange">section 
 *Note: one row contains 18 stiches in 6 sections of 3 stiches*
 
 To accomplish this, the following steps are taken:
-1. Each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span> is numbered and grouped together into a list named <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting c<span style="color:blue">count1</span> would be [2,1,1,2].
+1. Each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span> is numbered and grouped together into a list named <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting <span style="color:blue">count1</span> would be [2,1,1,2].
 2. A list titled <span style="color:blue">count2</span> is created.
 3. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">count1</span> is created.
 4. Within the for loop, each i<sup>th</sup> item is multiplied by 3 and this new value is added to the list <span style="color:blue">count2</span>. Once this process has repeated for all the items in <span style="color:blue">count1</span>, the for loop is broken. This for loop has increased each of the 6 stiches of interest by a factor of 3 to create 18 stiches per row.
