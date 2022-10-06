@@ -1,6 +1,6 @@
-title: "__FIA Midwest Climate Data__"
-author: "Denise Rauschendorfer"
-date: "1/31/2022"
+__Randomly Generated Mosaic Scarf Pattern__/n
+Denise Rauschendorfer/n
+9/15/2022
 
 ## Randomly Generated Mosaic Scarf Pattern
 
@@ -10,6 +10,8 @@ The pattern created will be automatically be written into a .txt file titled "kn
 The following code was executed using Python 3.10. 
 
 ## __Creating a Written Pattern__
+
+
 
 
 '''
@@ -26,6 +28,7 @@ for k in range(4):
         list.append(n)
     print(list)
 
+    
     odd_row1 = []
     for i in list:
         if i == 0:
