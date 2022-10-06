@@ -18,7 +18,7 @@ The following code was executed using Python 3.10.
 ### __Section 1:__
 In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>' and '<span style="color:red">re</span>' need to be imported. Additionally, the operation '<span style="color:red">groupby</span>' in the module '<span style="color:red">itertools</span>' is also required. 
 
-This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">section 5</span>, and are needed for the code in <span style="color:orange">sections 2-5</span> to run without resulting in an error.
+This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">Section 5</span>, and are needed for the code in <span style="color:orange">Sections 2-5</span> to run without resulting in an error.
 
 ```
 import random
@@ -56,7 +56,7 @@ print(odd_row1)
 
 
 ### __Section 3:__
-In this section of code, the list created in <span style="color:orange">section 2</span> named <span style="color:blue">odd_row1</span> is simiplified so that consecutive duplicates are grouped together. The nuber of stiches is then multiplied by 3 to represent the total nuber of stiches in one row of the repeated rectangular block. 
+In this section of code, the list created in <span style="color:orange">Section 2</span> named <span style="color:blue">odd_row1</span> is simiplified so that consecutive duplicates are grouped together. The nuber of stiches is then multiplied by 3 to represent the total nuber of stiches in one row of the repeated rectangular block. 
 
 *Note: one row contains 18 stiches in 6 sections of 3 stiches*
 
@@ -79,7 +79,7 @@ print(count2)
 
 
 ### __Section 4:__
-In this section of code, the list <span style="color:blue">count2</span> created in <span style="color:orange">sections 3</span> is combined with the list <span style="color:blue">odd_row1</span> created in <span style="color:orange">sections 2</span> to make a condensed 18 stitch row.
+In this section of code, the list <span style="color:blue">count2</span> created in <span style="color:orange">Sections 3</span> is combined with the list <span style="color:blue">odd_row1</span> created in <span style="color:orange">Sections 2</span> to make a condensed 18 stitch row.
 
 To accomplish this, the following steps are taken:
 1. A list titled <span style="color:blue">condensed_odd_row1</span> is created.
@@ -108,18 +108,18 @@ else:
 
 ### __Section 5:__
 The 16 different rows of each rectangular block are also broken up into 4 different sections (16 rows/4 = 4 rows per section) for the pattern to be visually appealing. When knitting on straight needles, every odd row you knit will be the front of the project and every even row will be the back of the project. This means that the same type of stitch (knit, purl, etc.) on an odd row will look different on an even row. This will cause a problem for our pattern when we try to repeat a row 4 times. To correct this, we need to make a front row (odd) and back row (even). Therefore, a front and back row will be repeated twice within each 4 row section of the repeated rectangular block.  
-In <span style="color:orange">section 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stich should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 4 row repeated section look uniform. 
+In <span style="color:orange">Section 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stich should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 4 row repeated section look uniform. 
 
 *Note: Changes in where the yarn is held (front/back) for slipped stiches will be noted only in the .txt file*
 
 To accomplish this, the following steps are taken:
 1. A copied list of <span style="color:blue">condensed_odd_row1</span> is created titled <span style="color:blue">con_odd_row1</span>.
-2. The list <span style="color:blue">con_odd_row1</span> is then added to the list <span style="color:blue">final_odd</span> created in <span style="color:orange">section 2</span>.
+2. The list <span style="color:blue">con_odd_row1</span> is then added to the list <span style="color:blue">final_odd</span> created in <span style="color:orange">Section 2</span>.
 3. To begin creating the matching even row, the order of the values in <span style="color:blue">condensed_odd_row1</span> is reversed to match how the stiches on the knitting needles will be configured on an even or "backwards" rows. 
 4. A list titled <span style="color:blue">con_even_row1</span> is created.
 5. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> is created.
 6. Within the for loop, an if/else statement is used. Using regular expressions to determine if the i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> contains either a 'k' or 'sl', the i<sup>th</sup> item is replaced with a 'p' or remains 'sl'. This new value is then added to <span style="color:blue">con_even_row1</span>. Once this process has repeated for all the items in <span style="color:blue">condensed_odd_row1</span>, the for loop is broken.
-7. The list <span style="color:blue">con_even_row1</span> is then added to the list <span style="color:blue">final_even</span> created in <span style="color:orange">section 1</span>.
+7. The list <span style="color:blue">con_even_row1</span> is then added to the list <span style="color:blue">final_even</span> created in <span style="color:orange">Section 1</span>.
 
 ```
 con_odd_row1 = condensed_odd_row1.copy()
@@ -138,11 +138,11 @@ final_even.append(con_even_row1)
 
 
 ### __Section 6:__
-To create the 4 different row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">sections 2-5</span>, 4 times. 
+To create the 4 different row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">Sections 2-5</span>, 4 times. 
 
 
 ### __Section 7:__
-In this section, a txt file named "<span style="color:blue">knit_mosaic_pattern.txt</span>" is created and populated with directions that corrolate to the values in <span style="color:blue">final_odd</span> and <span style="color:blue">final_even</span> from <span style="color:orange">section 7</span>. 
+In this section, a txt file named "<span style="color:blue">knit_mosaic_pattern.txt</span>" is created and populated with directions that corrolate to the values in <span style="color:blue">final_odd</span> and <span style="color:blue">final_even</span> from <span style="color:orange">Section 7</span>. 
 
 *Note: A new "<span style="color:blue">knit_mosaic_pattern.txt</span>" file will be created/overwritten each time the code is run.*
 
