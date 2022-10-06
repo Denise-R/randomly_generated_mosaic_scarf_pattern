@@ -1,4 +1,5 @@
 Denise Rauschendorfer
+
 9/15/2022
 
 
@@ -17,7 +18,7 @@ The following code was executed using Python 3.10.
 ### __Section 1:__
 In order to create a randomly generated written pattern, the modules 'random' and 're' need to be imported. Additionally, the operation 'groupby' in the module 'itertools' is also required. 
 
-This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">section 5</span>, and are needed for the code in <span style="color:orange">sections 2-5</span> to run without resulting in an error.
+This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue;">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">section 5</span>, and are needed for the code in <span style="color:orange">sections 2-5</span> to run without resulting in an error.
 
 ```
 import random
