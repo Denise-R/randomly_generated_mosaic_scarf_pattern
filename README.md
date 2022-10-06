@@ -58,7 +58,7 @@ print(odd_row1)
 ### __Section 3:__
 In this section of code, the list created in <span style="color:orange">section 2</span> named <span style="color:blue">odd_row1</span> is simiplified so that consecutive duplicates are grouped together. The nuber of stiches is then multiplied by 3 to represent the total nuber of stiches in one row of the repeated rectangular block. 
 
-*Note: one row contains 18 stiches in 6 sections/groups of 3*
+*Note: one row contains 18 stiches in 6 sections of 3 stiches*
 
 To accomplish this, the following steps are taken:
 1. Each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span> is numbered and grouped together into a list named <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting c<span style="color:blue">count1</span> would be [2,1,1,2].
