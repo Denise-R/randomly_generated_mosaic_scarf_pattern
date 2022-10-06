@@ -6,7 +6,7 @@ Denise Rauschendorfer
 ## Randomly Generated Mosaic Scarf Pattern
 
 This repository contains a code that can be run using python to randomly generate a two-color, knitted mosaic scarf pattern.
-The pattern created will be automatically be written into a .txt file titled "knit_mosaic_pattern.txt".
+The pattern created will automatically be written into a .txt file titled "<span style="color:blue">knit_mosaic_pattern.txt</span>".
 
 The pattern created from executing the following code consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.
 There are 24^2 (576) different pattern combinations that can be generated from this code!!
