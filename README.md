@@ -1,7 +1,7 @@
 Denise Rauschendorfer
 
 9/15/2022
-
+<span style="color:blue">some *blue* text</span>.
 
 ## Randomly Generated Mosaic Scarf Pattern
 
