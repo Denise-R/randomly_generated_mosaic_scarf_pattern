@@ -1,6 +1,6 @@
 Denise Rauschendorfer
-
 9/15/2022
+
 
 ## Randomly Generated Mosaic Scarf Pattern
 
