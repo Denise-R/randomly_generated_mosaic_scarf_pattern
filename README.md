@@ -16,9 +16,9 @@ The following code was executed using Python 3.10.
 ## __Creating a Written Pattern__
 
 ### __Section 1:__
-In order to create a randomly generated written pattern, the modules 'random' and 're' need to be imported. Additionally, the operation 'groupby' in the module 'itertools' is also required. 
+In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>' and '<span style="color:red">re</span>' need to be imported. Additionally, the operation '<span style="color:red">groupby</span>' in the module '<span style="color:red">itertools</span>' is also required. 
 
-This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue;">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">section 5</span>, and are needed for the code in <span style="color:orange">sections 2-5</span> to run without resulting in an error.
+This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">section 5</span>, and are needed for the code in <span style="color:orange">sections 2-5</span> to run without resulting in an error.
 
 ```
 import random
@@ -139,7 +139,9 @@ To create the 4 different row sections that make up the repeating rectangular bl
 
 
 ### __Section 7:__
-In this section of code,
+In this section, a txt file named "<span style="color:blue">knit_mosaic_pattern.txt</span>" is created and populated with directions that corrolate to the values in <span style="color:blue">final_odd</span> and <span style="color:blue">final_even</span> from <span style="color:orange">section 7</span>. 
+*Note: A new "<span style="color:blue">knit_mosaic_pattern.txt</span>" file will be created/overwritten each time the code is run.*
+
 ```
 filename = "knit_mosaic_pattern.txt"
 with open(filename, 'w') as f:
@@ -206,3 +208,4 @@ with open(filename, 'w') as f:
     f.write("Coded by: Denise Rauschendorfer (2022)\n")
 f.close()
 ```
+
