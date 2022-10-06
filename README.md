@@ -30,7 +30,7 @@ final_odd=[]
 ```
 
 ### __Section 2:__
-This section of code specifies the type of stich needed in one row of the repeated rectangular block. Each 4 by 2.6 inch rectangular block is composed of 18 stiches(x axis) and 16 rows(y axis). In order for the pattern created to show up best on a scarf, each row of the rectangular block is broken up into 6 different sections(18 stiches/6 = 3 stiches per section). Therefore, each row of the rectanular block contains only 6 stiches of interest. To specify the type of stitch for the 6 stitches of interest, the following steps are taken:
+This section of code specifies the type of stitch needed in one row of the repeated rectangular block. Each 4 by 2.6 inch rectangular block is composed of 18 stiches (x axis) and 16 rows (y axis). In order for the pattern created to show up best on a scarf, each row of the rectangular block is broken up into 6 different sections(18 stiches/6 = 3 stiches per section). Therefore, each row of the rectanular block contains only 6 stiches of interest. To specify the type of stitch for the 6 stitches of interest, the following steps are taken:
 1. A list titled <span style="color:blue">list</span> is created.
 2. A for loop that repeats 6 times is created. 
 3. Within the for loop, either a 0 or 1 is assigned to a variable named <span style="color:blue">n</span>. This value is then saved in list. Once this process has repeated 6 times, the for loop is broken.
@@ -57,6 +57,7 @@ print(odd_row1)
 
 ### __Section 3:__
 In this section of code, the list created in <span style="color:orange">section 2</span> named <span style="color:blue">odd_row1</span> is simiplified so that consecutive duplicates are grouped together. The nuber of stiches is then multiplied by 3 to represent the total nuber of stiches in one row of the repeated rectangular block. 
+
 *Note: one row contains 18 stiches in 6 sections/groups of 3*
 
 To accomplish this, the following steps are taken:
