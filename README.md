@@ -30,13 +30,13 @@ final_odd=[]
 ```
 
 ### __Section 2:__
-This section of code specifies the type of stitch needed in one row of the repeated rectangular block. Each 4 by 2.6 inch rectangular block is composed of 18 stiches (x axis) and 16 rows (y axis). In order for the pattern created to show up best on a scarf, each row of the rectangular block is broken up into 6 different sections(18 stiches/6 = 3 stiches per section). Therefore, each row of the rectanular block contains only 6 stiches of interest. To specify the type of stitch for the 6 stitches of interest, the following steps are taken:
+This section of code specifies the type of stitch needed in one row of the repeated rectangular block. Each 4 by 2.6 inch rectangular block is composed of 18 stitches (x axis) and 16 rows (y axis). In order for the pattern created to show up best on a scarf, each row of the rectangular block is broken up into 6 different sections(18 stitches/6 = 3 stitches per section). Therefore, each row of the rectangular block contains only 6 stitches of interest. To specify the type of stitch for the 6 stitches of interest, the following steps are taken:
 1. A list titled <span style="color:blue">list</span> is created.
 2. A for loop that repeats 6 times is created. 
 3. Within the for loop, either a 0 or 1 is assigned to a variable named <span style="color:blue">n</span>. This value is then saved in list. Once this process has repeated 6 times, the for loop is broken.
 4. Another list titled <span style="color:blue">odd_row1</span> is created.
 5. A second for loop is created that repeats for each item within <span style="color:blue">list</span>.
-6. Within this for loop, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, this stitch is arbitrarally determined to be "k" or a knit stitch. Similarly, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, it is "sl" or a slipped stitch. Once this process has repeated for all the items in <span style="color:blue">list</span>, the for loop is broken.
+6. Within this for loop, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, this stitch is arbitrarily determined to be "k" or a knit stitch. Similarly, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, it is "sl" or a slipped stitch. Once this process has repeated for all the items in <span style="color:blue">list</span>, the for loop is broken.
 
 ```
 list = []
@@ -56,15 +56,15 @@ print(odd_row1)
 
 
 ### __Section 3:__
-In this section of code, the list created in <span style="color:orange">Section 2</span> named <span style="color:blue">odd_row1</span> is simiplified so that consecutive duplicates are grouped together. The nuber of stiches is then multiplied by 3 to represent the total nuber of stiches in one row of the repeated rectangular block. 
+In this section of code, the list created in <span style="color:orange">Section 2</span> named <span style="color:blue">odd_row1</span> is simplified so that consecutive duplicates are grouped together. The number of stitches is then multiplied by 3 to represent the total number of stitches in one row of the repeated rectangular block. 
 
-*Note: one row contains 18 stiches in 6 sections of 3 stiches*
+*Note: one row contains 18 stitches in 6 sections of 3 stitches*
 
 To accomplish this, the following steps are taken:
 1. Each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span> is numbered and grouped together into a list named <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting <span style="color:blue">count1</span> would be [2,1,1,2].
 2. A list titled <span style="color:blue">count2</span> is created.
 3. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">count1</span> is created.
-4. Within the for loop, each i<sup>th</sup> item is multiplied by 3 and this new value is added to the list <span style="color:blue">count2</span>. Once this process has repeated for all the items in <span style="color:blue">count1</span>, the for loop is broken. This for loop has increased each of the 6 stiches of interest by a factor of 3 to create 18 stiches per row.
+4. Within the for loop, each i<sup>th</sup> item is multiplied by 3 and this new value is added to the list <span style="color:blue">count2</span>. Once this process has repeated for all the items in <span style="color:blue">count1</span>, the for loop is broken. This for loop has increased each of the 6 stitches of interest by a factor of 3 to create 18 stitches per row.
 
 ```
 count1 = [sum(1 for key in g) for key, g in groupby(odd_row1)]
@@ -83,7 +83,7 @@ In this section of code, the list <span style="color:blue">count2</span> created
 
 To accomplish this, the following steps are taken:
 1. A list titled <span style="color:blue">condensed_odd_row1</span> is created.
-2. An if/else statement is used to to determine what the first stitch in <span style="color:blue">odd_row1</span> is ("k" or "sl").
+2. An if/else statement is used to determine what the first stitch in <span style="color:blue">odd_row1</span> is ("k" or "sl").
 3. Depending on if the index 0 of <span style="color:blue">odd_row1</span> is a "k" or "sl", a corresponding for loop is executed for every item in <span style="color:blue">count2</span>.
 4. Within the for loop, the value in each index of <span style="color:blue">count2</span> is converted into a string with the stitch type ("k" or "sl") it corresponds to and added to the list <span style="color:blue">condensed_odd_row1</span>. For example, if <span style="color:blue">condensed_odd_row1</span> begins with a knit ("k") stitch, the value in each even index of <span style="color:blue">count2</span> will have "k" appended to it and the value in each odd index of <span style="color:blue">count2</span> will have "sl" appended to it. Once this process has repeated for all the items in <span style="color:blue">count2</span>, the for loop is broken.
 
@@ -108,14 +108,14 @@ else:
 
 ### __Section 5:__
 The 16 different rows of each rectangular block are also broken up into 4 different sections (16 rows/4 = 4 rows per section) for the pattern to be visually appealing. When knitting on straight needles, every odd row you knit will be the front of the project and every even row will be the back of the project. This means that the same type of stitch (knit, purl, etc.) on an odd row will look different on an even row. This will cause a problem for our pattern when we try to repeat a row 4 times. To correct this, we need to make a front row (odd) and back row (even). Therefore, a front and back row will be repeated twice within each 4 row section of the repeated rectangular block.  
-In <span style="color:orange">Section 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stich should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 4 row repeated section look uniform. 
+In <span style="color:orange">Section 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stitch should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 4 row repeated section look uniform. 
 
-*Note: Changes in where the yarn is held (front/back) for slipped stiches will be noted only in the .txt file*
+*Note: Changes in where the yarn is held (front/back) for slipped stitches will be noted only in the .txt file*
 
 To accomplish this, the following steps are taken:
 1. A copied list of <span style="color:blue">condensed_odd_row1</span> is created titled <span style="color:blue">con_odd_row1</span>.
 2. The list <span style="color:blue">con_odd_row1</span> is then added to the list <span style="color:blue">final_odd</span> created in <span style="color:orange">Section 2</span>.
-3. To begin creating the matching even row, the order of the values in <span style="color:blue">condensed_odd_row1</span> is reversed to match how the stiches on the knitting needles will be configured on an even or "backwards" rows. 
+3. To begin creating the matching even row, the order of the values in <span style="color:blue">condensed_odd_row1</span> is reversed to match how the stitches on the knitting needles will be configured on an even or "backwards" rows. 
 4. A list titled <span style="color:blue">con_even_row1</span> is created.
 5. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> is created.
 6. Within the for loop, an if/else statement is used. Using regular expressions to determine if the i<sup>th</sup> item in <span style="color:blue">condensed_odd_row1</span> contains either a 'k' or 'sl', the i<sup>th</sup> item is replaced with a 'p' or remains 'sl'. This new value is then added to <span style="color:blue">con_even_row1</span>. Once this process has repeated for all the items in <span style="color:blue">condensed_odd_row1</span>, the for loop is broken.
@@ -142,7 +142,7 @@ To create the 4 different row sections that make up the repeating rectangular bl
 
 
 ### __Section 7:__
-In this section, a txt file named "<span style="color:blue">knit_mosaic_pattern.txt</span>" is created and populated with directions that corrolate to the values in <span style="color:blue">final_odd</span> and <span style="color:blue">final_even</span> from <span style="color:orange">Section 7</span>. 
+In this section, a txt file named "<span style="color:blue">knit_mosaic_pattern.txt</span>" is created and populated with directions that correlate to the values in <span style="color:blue">final_odd</span> and <span style="color:blue">final_even</span> from <span style="color:orange">Section 7</span>. 
 
 *Note: A new "<span style="color:blue">knit_mosaic_pattern.txt</span>" file will be created/overwritten each time the code is run.*
 
