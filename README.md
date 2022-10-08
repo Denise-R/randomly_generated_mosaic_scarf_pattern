@@ -226,15 +226,15 @@ f.close()
 In this section, a graphic representation of the repeating rectangular block is created and saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
 
 To accomplish this, the following steps are taken:
-1. The list <span style="color:blue">final_graphic</span> that contains the 4 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top. *Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf
-2. A two-toned, black and white color map named <span style="color:blue">cmap</span> is created. All values of 1 (knit) will be represented by white squares and all the values of 0 (slip) will be represented by black squares.
-3. Within the color map, <span style="color:blue">cmap</span>, subplots are created to be able to add gridlines.
-4. Black grid lines along the x and y axis are then added to easily visualize each unique stitch (6 unique stitches per row).
-5. The location of the x and y gridlines are then specified. 
-6. The x and y axis labels are removed from the graphic.
-7. The title, <span style="color:blue">Repeating Rectangular Block</span>, is added to the graphic.
-8. Using the data from <span style="color:blue">final_graphic</span>, the color map is plotted as an image.
-9. The color map image is then saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
+1. The list <span style="color:blue">final_graphic</span> that contains the 4 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top. *Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf*
+3. A two-toned, black and white color map named <span style="color:blue">cmap</span> is created. All values of 1 (knit) will be represented by white squares and all the values of 0 (slip) will be represented by black squares.
+4. Within the color map, <span style="color:blue">cmap</span>, subplots are created to be able to add gridlines.
+5. Black grid lines along the x and y axis are then added to easily visualize each unique stitch (6 unique stitches per row).
+6. The location of the x and y gridlines are then specified. 
+7. The x and y axis labels are removed from the graphic.
+8. The title, <span style="color:blue">Repeating Rectangular Block</span>, is added to the graphic.
+9. Using the data from <span style="color:blue">final_graphic</span>, the color map is plotted as an image.
+10. The color map image is then saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
 
 ```
 final_graphic.reverse()
