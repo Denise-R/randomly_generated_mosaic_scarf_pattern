@@ -16,17 +16,21 @@ The following code was executed using Python 3.10.
 ## __Creating a Written Pattern__
 
 ### __Section 1:__
-In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>' and '<span style="color:red">re</span>' need to be imported. Additionally, the operation '<span style="color:red">groupby</span>' in the module '<span style="color:red">itertools</span>' is also required. 
+In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>', '<span style="color:red">re</span>', and '<span style="color:red">np</span>' need to be imported. Additionally, the operations '<span style="color:red">groupby</span>', '<span style="color:red">pyplot</span>', and '<span style="color:red">colors</span>' in the modules '<span style="color:red">itertools</span>' and '<span style="color:red">matplotlib</span>' are also required. 
 
-This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">Section 5</span>, and are needed for the code in <span style="color:orange">Sections 2-5</span> to run without resulting in an error.
+This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">Section 5</span>, and are needed for the code in <span style="color:orange">Sections 2-5</span> to run without resulting in an error. The list <span style="color:blue">final_graphic</span> is also created and will be useful in <span style="color:orange">Section 8</span> when creating a graphic representation of the repeating rectangular block. 
 
 ```
 import random
 import re
+import numpy as np
 from itertools import groupby
+from matplotlib import pyplot as plt
+from matplotlib import colors
 
 final_even=[]
 final_odd=[]
+final_graphic=[]
 ```
 
 ### __Section 2:__
@@ -34,9 +38,10 @@ This section of code specifies the type of stitch needed in one row of the repea
 1. A list titled <span style="color:blue">list</span> is created.
 2. A for loop that repeats 6 times is created. 
 3. Within the for loop, either a 0 or 1 is assigned to a variable named <span style="color:blue">n</span>. This value is then saved in list. Once this process has repeated 6 times, the for loop is broken.
-4. Another list titled <span style="color:blue">odd_row1</span> is created.
-5. A second for loop is created that repeats for each item within <span style="color:blue">list</span>.
-6. Within this for loop, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, this stitch is arbitrarily determined to be "k" or a knit stitch. Similarly, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, it is "sl" or a slipped stitch. Once this process has repeated for all the items in <span style="color:blue">list</span>, the for loop is broken.
+4. The <span style="color:blue">list</span> populated by the for loop is then saved and added to <span style="color:blue">final_graphic</span>. The list <span style="color:blue">final_graphic</span> will be used later in <span style="color:orange">Section 8</span> to make a graphic representation of the repeating rectangular mosaic block.
+5. Another list titled <span style="color:blue">odd_row1</span> is created.
+6. A second for loop is created that repeats for each item within <span style="color:blue">list</span>.
+7. Within this for loop, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, this stitch is arbitrarily determined to be "k" or a knit stitch. Similarly, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, it is "sl" or a slipped stitch. Once this process has repeated for all the items in <span style="color:blue">list</span>, the for loop is broken.
 
 ```
 list = []
@@ -44,6 +49,7 @@ for i in range(0, 6):
     n = random.randrange(0, 2)
     list.append(n)
 print(list)
+final_graphic.append(list)
 
 odd_row1 = []
 for i in list:
@@ -217,3 +223,34 @@ f.close()
 ## __Creating a Graphic Pattern__
 
 ### __Section 8:__
+In this section, a graphic representation of the repeating rectangular block is created and saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
+
+To accomplish this, the following steps are taken:
+1. The list <span style="color:blue">final_graphic</span> that contains the 4 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top.
+
+*Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf
+2. A two-toned, black and white color map named <span style="color:blue">cmap</span> is created. All values of 1 (knit) will be represented by white squares and all the values of 0 (slip) will be represented by black squares.
+3. Within the color map, <span style="color:blue">cmap</span>, subplots are created to be able to add gridlines.
+4. Black grid lines along the x and y axis are then added to easily visualize each unique stitch (6 unique stitches per row).
+5. The location of the x and y gridlines are then specified. 
+6. The x and y axis labels are removed from the graphic.
+7. The title, <span style="color:blue">Repeating Rectangular Block</span>, is added to the graphic.
+8. Using the data from <span style="color:blue">final_graphic</span>, the color map is plotted as an image.
+9. The color map image is then saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
+
+```
+final_graphic.reverse()
+
+cmap = colors.ListedColormap(['white', 'black'])
+
+fig, ax = plt.subplots()
+ax.grid(color='black', linewidth=2)
+ax.set_xticks(np.arange(-0.5, 6, 1))
+ax.set_yticks(np.arange(-0.5, 4, 1))
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+plt.title("Repeating Rectangular Block", fontsize=20, color="black")
+
+plt.imshow(final_graphic, cmap=cmap)
+plt.savefig("knit_mosaic_graphic_pattern.jpg")
+```
