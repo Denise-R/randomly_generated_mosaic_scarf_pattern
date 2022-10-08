@@ -226,9 +226,7 @@ f.close()
 In this section, a graphic representation of the repeating rectangular block is created and saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
 
 To accomplish this, the following steps are taken:
-1. The list <span style="color:blue">final_graphic</span> that contains the 4 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top.
-
-*Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf
+1. The list <span style="color:blue">final_graphic</span> that contains the 4 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top. *Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf
 2. A two-toned, black and white color map named <span style="color:blue">cmap</span> is created. All values of 1 (knit) will be represented by white squares and all the values of 0 (slip) will be represented by black squares.
 3. Within the color map, <span style="color:blue">cmap</span>, subplots are created to be able to add gridlines.
 4. Black grid lines along the x and y axis are then added to easily visualize each unique stitch (6 unique stitches per row).
