@@ -69,7 +69,7 @@ To accomplish this, the following steps are taken:
 1. A list titled <span style="color:blue">count1</span> is created.
 2. The variable <span style="color:blue">n</span> is also created and set to equal 1.
 3. The value 'NULL' is then added to the end of <span style="color:blue">odd_row1</span>.
-4. A for loop that will iterate through the indices 0-5 of <span style="color:blue">odd_row1</span> is created. This for loop will be used to count each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span>. The grouped number of duplicates are then added to the list <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting <span style="color:blue">count1</span> would be [2,1,1,2].
+4. A for loop that will iterate through the indices 0-5 of <span style="color:blue">odd_row1</span> is created. This for loop will be used to count each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span>. The grouped number of duplicates are then added to the list <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled ['k','sl','k','sl','k','k'], the resulting <span style="color:blue">count1</span> would be [1,1,1,1,2].
 5. Within the for loop, an if/else statement is used to make a running count of consecutive duplicates.
 6. Next, the 'NULL' value added to <span style="color:blue">odd_row1</span> is removed.
 7. A list titled <span style="color:blue">count2</span> is created.
@@ -430,6 +430,7 @@ plt.savefig("knit_mosaic_graphic_pattern.jpg")
 
 
 ### __Example of the 'knit_mosaic_pattern.txt':__
+![knit_mosaic_pattern](C:\Users\12488\PycharmProjects\pythonProject1\knit_mosaic_pattern.txt)
 ```
 Knit Mosaic Scarf Pattern
 
