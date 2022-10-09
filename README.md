@@ -430,7 +430,6 @@ plt.savefig("knit_mosaic_graphic_pattern.jpg")
 
 
 ### __Example of the 'knit_mosaic_pattern.txt':__
-![knit_mosaic_pattern](C:\Users\12488\PycharmProjects\pythonProject1\knit_mosaic_pattern.txt)
 ```
 Knit Mosaic Scarf Pattern
 
