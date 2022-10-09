@@ -67,14 +67,28 @@ In this section of code, the list created in <span style="color:orange">Section 
 *Note: one row contains 18 stitches in 6 sections of 3 stitches*
 
 To accomplish this, the following steps are taken:
-1. Each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span> is numbered and grouped together into a list named <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting <span style="color:blue">count1</span> would be [2,1,1,2].
-2. A list titled <span style="color:blue">count2</span> is created.
-3. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">count1</span> is created.
-4. Within the for loop, each i<sup>th</sup> item is multiplied by 3 and this new value is added to the list <span style="color:blue">count2</span>. Once this process has repeated for all the items in <span style="color:blue">count1</span>, the for loop is broken. This for loop has increased each of the 6 stitches of interest by a factor of 3 to create 18 stitches per row.
+1. A list titled <span style="color:blue">count1</span> is created.
+2. The variable <span style="color:blue">n</span> is also created and set to equal 1.
+3. The value 'NULL' is then added to the end of <span style="color:blue">odd_row1</span>.
+4. A for loop that will iterate through the indices 0-5 of <span style="color:blue">odd_row1</span> is created. This for loop will be used to count each consecutive duplicate of either a "k" or "sl" in the list <span style="color:blue">odd_row1</span>. The grouped number of duplicates are then added to the list <span style="color:blue">count1</span>. For example if <span style="color:blue">odd_row1</span> equaled [k,k,sl,k,sl,sl], the resulting <span style="color:blue">count1</span> would be [2,1,1,2].
+5. Within the for loop, an if/else statement is used to make a running count of consecutive duplicates.
+6. Next, the 'NULL' value added to <span style="color:blue">odd_row1</span> is removed.
+7. A list titled <span style="color:blue">count2</span> is created.
+8. A for loop that repeats for each i<sup>th</sup> item in <span style="color:blue">count1</span> is created.
+9. Within the for loop, each i<sup>th</sup> item is multiplied by 3 and this new value is added to the list <span style="color:blue">count2</span>. Once this process has repeated for all the items in <span style="color:blue">count1</span>, the for loop is broken. This for loop has increased each of the 6 stitches of interest by a factor of 3 to create 18 stitches per row.
 
 ```
-count1 = [sum(1 for key in g) for key, g in groupby(odd_row1)]
+count1 = []
+n = 1
+odd_row1.append('NULL')
+for i in range(0, 6):
+    if odd_row1[i] == odd_row1[i + 1]:
+        n += 1
+    else:
+        count1.append(n)
+        n = 1
 print(count1)
+odd_row1.remove('NULL')
 
 count2 = []
 for i in count1:
@@ -252,3 +266,242 @@ plt.title("Repeating Rectangular Block", fontsize=20, color="black")
 plt.imshow(final_graphic, cmap=cmap)
 plt.savefig("knit_mosaic_graphic_pattern.jpg")
 ```
+
+
+## __Appendix__
+
+### __Compiled Copy of Raw Code:__
+```
+import random
+import re
+import numpy as np
+from matplotlib import pyplot as plt
+from matplotlib import colors
+
+final_even=[]
+final_odd=[]
+final_graphic=[]
+for k in range(4):
+    list = []
+    for i in range(0, 6):
+        n = random.randrange(0, 2)
+        list.append(n)
+    print(list)
+    final_graphic.append(list)
+
+    odd_row1 = []
+    for i in list:
+        if i == 0:
+            odd_row1.append("k")
+        else:
+            odd_row1.append("sl")
+    print(odd_row1)
+
+    count1 = []
+    n = 1
+    odd_row1.append('NULL')
+    for i in range(0, 6):
+        if odd_row1[i] == odd_row1[i + 1]:
+            n += 1
+        else:
+            count1.append(n)
+            n = 1
+    print(count1)
+    odd_row1.remove('NULL')
+
+    count2 = []
+    for i in count1:
+        i = i * 3
+        count2.append(i)
+    print(count2)
+
+    condensed_odd_row1 = []
+    if odd_row1[0] == 'k':
+        print("k is first")
+        for i in range(0, len(count2)):
+            if i % 2 == 0:
+                condensed_odd_row1.append(str(count2[i]) + "k")
+            else:
+                condensed_odd_row1.append(str(count2[i]) + "sl")
+    else:
+        print("sl is first")
+        for i in range(0, len(count2)):
+            if i % 2 == 0:
+                condensed_odd_row1.append(str(count2[i]) + "sl")
+            else:
+                condensed_odd_row1.append(str(count2[i]) + "k")
+
+    con_odd_row1 = condensed_odd_row1.copy()
+    print(con_odd_row1)
+    final_odd.append(con_odd_row1)
+    condensed_odd_row1.reverse()
+    con_even_row1 = []
+    for i in condensed_odd_row1:
+        if re.search("k$", i):
+            con_even_row1.append(i.replace('k', 'p'))
+        else:
+            con_even_row1.append(i.replace('sl', 'sl'))
+    print(con_even_row1)
+    final_even.append(con_even_row1)
+
+filename = "knit_mosaic_pattern.txt"
+with open(filename, 'w') as f:
+    f.write('Knit Mosaic Scarf Pattern\n\n')
+    f.write("This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.\n\n")
+    f.write("This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.\n"
+            "There are 24^2 (576) different pattern combinations that can be generated from this code!!.\n\n")
+    f.write("Materials\n"
+            "\t-255 yards worsted yarn (4) for the main color\n"
+            "\t-255 yards worsted yarn (4) for the contrast color\n"
+            "\t-US 8 (5mm) needles\n"
+            "\t-Stitch markers\n"
+            "\t-Tapestry needle\n\n")
+    f.write("Abbreviations\n"
+            "\t-CC: Contrast Color\n"
+            "\t-CO: Cast on\n"
+            "\t-k: Knit\n"
+            "\t-MC: Main Color\n"
+            "\t-p: purl\n"
+            "\t-pm: Place Marker\n"
+            "\t-pwise: Purlwise\n"
+            "\t-wyib: With Yarn in Back\n"
+            "\t-wyif: With Yarn in Front\n\n")
+    f.write("Size\n"
+            "\tCreates a 72 by 20 inch rectangular scarf once washed and blocked.\n\n")
+    f.write("Gauge\n"
+            "\t18 stitches by 24 rows = 4 inch square\n\n")
+    f.write("Instructions\n"
+            "\tCasting On\n"
+            "\t\tUsing US 8 needles, CO 90 stitches in MC.\n"
+            "\tRepeating Pattern\n"
+            "\t\tRow 1 (MC): "+str(final_odd[0])+" pm and repeat to end of row.\n"
+            "\t\t\t\t* For all odd rows, slip yarn pwise wyib * \n"
+            "\t\tRow 2 (MC): "+str(final_even[0])+" Repeat.\n"
+            "\t\t\t\t* For all even rows, slip yarn pwise wyif * \n"
+            "\t\tRows 3-4: Repeat rows 1-2.\n"
+            "\t\tRow 5 (CC): "+str(final_odd[1])+" Repeat.\n"
+            "\t\tRow 6 (CC): "+str(final_even[1])+" Repeat.\n"
+            "\t\tRows 7-8: Repeat rows 5-6, 2 times\n"
+            "\t\tRow 9 (MC): "+str(final_odd[2])+" Repeat.\n"
+            "\t\tRow 10 (MC): "+str(final_even[2])+" Repeat.\n"
+            "\t\tRows 11-12: Repeat rows 9-10, 2 times\n"
+            "\t\tRow 13 (CC): "+str(final_odd[3])+" Repeat.\n"
+            "\t\tRow 14 (CC): "+str(final_even[3])+" Repeat.\n"
+            "\t\tRows 15-16: Repeat rows 13-14, 2 times\n"
+            "\t\tRows 17-432: Repeat rows 1-16, 27 times\n"
+            "\tBinding Off\n"
+            "\t\tStep 1: Knit 2 stitches"
+            "\t\tStep 2: Move those 2 stitches back to the other needle.\n"
+            "\t\tStep 3: Knit the 2 stitches together\n"
+            "\t\tStep 4: Knit 1 stitch\n"
+            "\t\tStep 5: Repeat steps 2-4 until there is only one stitch left.\n"
+            "\t\tStep 6: Cut your yarn leaving a ~5 inch tail and pull it through the last stitch.\n"
+            "\t\t\t\tThis will create a knot and prevent your scarf from unraveling.\n"
+            "\t\tStep 7: Using the tapestry needle work in all any ends.\n"
+            "\t\tStep 8: Wash and block you scarf :)\n"
+            "\tAdding Fringe (optional)\n"
+            "\t\tStep 1: Cut 4, 8 inch strands of yarn\n"
+            "\t\tStep 2: Holding the 4 strands together, use the crochet hook to pull the center of each\n"
+            "\t\t\t\tstrand through a stitch along the bottom/top of the scarf. This will create a loop.\n"
+            "\t\tStep 3: Pull the fridge ends through the loop, and tighten\n"
+            "\t\tStep 4: Trim fringe ends to desired length\n"
+            "\t\tStep 5: Repeat steps 1-4 to add additional fringe wherever desired\n\n")
+    f.write("Coded by: Denise Rauschendorfer (2022)\n")
+f.close()
+
+
+print(final_graphic)
+final_graphic.reverse()
+print(final_graphic)
+
+cmap = colors.ListedColormap(['white', 'black'])
+
+fig, ax = plt.subplots()
+
+ax.grid(color='black', linewidth=2)
+ax.set_xticks(np.arange(-0.5, 6, 1))
+ax.set_yticks(np.arange(-0.5, 4, 1))
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+plt.title("Repeating Rectangular Block", fontsize=20, color="black")
+
+plt.imshow(final_graphic, cmap=cmap)
+plt.savefig("knit_mosaic_graphic_pattern.jpg")
+```
+
+
+### __Example of the 'knit_mosaic_pattern.txt':__
+```
+Knit Mosaic Scarf Pattern
+
+This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.
+
+This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.
+There are 24^2 (576) different pattern combinations that can be generated from this code!!.
+
+Materials
+	-255 yards worsted yarn (4) for the main color
+	-255 yards worsted yarn (4) for the contrast color
+	-US 8 (5mm) needles
+	-Stitch markers
+	-Tapestry needle
+
+Abbreviations
+	-CC: Contrast Color
+	-CO: Cast on
+	-k: Knit
+	-MC: Main Color
+	-p: purl
+	-pm: Place Marker
+	-pwise: Purlwise
+	-wyib: With Yarn in Back
+	-wyif: With Yarn in Front
+
+Size
+	Creates a 72 by 20 inch rectangular scarf once washed and blocked.
+
+Gauge
+	18 stitches by 24 rows = 4 inch square
+
+Instructions
+	Casting On
+		Using US 8 needles, CO 90 stitches in MC.
+	Repeating Pattern
+		Row 1 (MC): ['3k', '3sl', '3k', '3sl', '6k'] pm and repeat to end of row.
+				* For all odd rows, slip yarn pwise wyib * 
+		Row 2 (MC): ['6p', '3sl', '3p', '3sl', '3p'] Repeat.
+				* For all even rows, slip yarn pwise wyif * 
+		Rows 3-4: Repeat rows 1-2.
+		Row 5 (CC): ['6k', '3sl', '3k', '6sl'] Repeat.
+		Row 6 (CC): ['6sl', '3p', '3sl', '6p'] Repeat.
+		Rows 7-8: Repeat rows 5-6, 2 times
+		Row 9 (MC): ['3sl', '3k', '3sl', '6k', '3sl'] Repeat.
+		Row 10 (MC): ['3sl', '6p', '3sl', '3p', '3sl'] Repeat.
+		Rows 11-12: Repeat rows 9-10, 2 times
+		Row 13 (CC): ['3sl', '9k', '3sl', '3k'] Repeat.
+		Row 14 (CC): ['3p', '3sl', '9p', '3sl'] Repeat.
+		Rows 15-16: Repeat rows 13-14, 2 times
+		Rows 17-432: Repeat rows 1-16, 27 times
+	Binding Off
+		Step 1: Knit 2 stitches		Step 2: Move those 2 stitches back to the other needle.
+		Step 3: Knit the 2 stitches together
+		Step 4: Knit 1 stitch
+		Step 5: Repeat steps 2-4 until there is only one stitch left.
+		Step 6: Cut your yarn leaving a ~5 inch tail and pull it through the last stitch.
+				This will create a knot and prevent your scarf from unraveling.
+		Step 7: Using the tapestry needle work in all any ends.
+		Step 8: Wash and block you scarf :)
+	Adding Fringe (optional)
+		Step 1: Cut 4, 8 inch strands of yarn
+		Step 2: Holding the 4 strands together, use the crochet hook to pull the center of each
+				strand through a stitch along the bottom/top of the scarf. This will create a loop.
+		Step 3: Pull the fridge ends through the loop, and tighten
+		Step 4: Trim fringe ends to desired length
+		Step 5: Repeat steps 1-4 to add additional fringe wherever desired
+
+Coded by: Denise Rauschendorfer (2022)
+```
+
+
+### __Example of 'knit_mosaic_graphic_pattern.jpg':__
+![](https://www.fs.usda.gov/foresthealth/images/FS_regions.gif)
