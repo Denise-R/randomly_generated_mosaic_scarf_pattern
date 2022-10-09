@@ -16,7 +16,7 @@ The following code was executed using Python 3.10.
 ## __Creating a Written Pattern__
 
 ### __Section 1:__
-In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>', '<span style="color:red">re</span>', and '<span style="color:red">np</span>' need to be imported. Additionally, the operations '<span style="color:red">groupby</span>', '<span style="color:red">pyplot</span>', and '<span style="color:red">colors</span>' in the modules '<span style="color:red">itertools</span>' and '<span style="color:red">matplotlib</span>' are also required. 
+In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>', '<span style="color:red">re</span>', and '<span style="color:red">np</span>' need to be imported. Additionally, the operations '<span style="color:red">pyplot</span>' and '<span style="color:red">colors</span>' in the module '<span style="color:red">matplotlib</span>' are also required. 
 
 This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">Section 5</span>, and are needed for the code in <span style="color:orange">Sections 2-5</span> to run without resulting in an error. The list <span style="color:blue">final_graphic</span> is also created and will be useful in <span style="color:orange">Section 8</span> when creating a graphic representation of the repeating rectangular block. 
 
@@ -24,7 +24,6 @@ This section of code also includes creating the lists <span style="color:blue">f
 import random
 import re
 import numpy as np
-from itertools import groupby
 from matplotlib import pyplot as plt
 from matplotlib import colors
 
@@ -504,4 +503,4 @@ Coded by: Denise Rauschendorfer (2022)
 
 
 ### __Example of 'knit_mosaic_graphic_pattern.jpg':__
-![](C:\Users\12488\PycharmProjects\pythonProject1\knit_mosaic_graphic_pattern.jpg)
+![knit_mosaic_graphic_pattern](https://user-images.githubusercontent.com/95630229/194775952-089835af-288b-4cd2-9aad-889227119df5.jpg)
