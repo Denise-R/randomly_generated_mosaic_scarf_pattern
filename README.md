@@ -246,7 +246,7 @@ f.close()
 ### __Section 8:__
 In this section, the stitch pattern produced for each odd row is modified and added to the list <span style="color:blue">final_graphic</span> so that a graphic representation of the repeating rectangular block can be created. To do this every unique stitch that shows up on the final knit scarf in the main color will be represented by a 1, and every unique stitch that shows up in the contrast color will be represented by a 0. 
 
-Additionally, the pattern swiches between the main color and contrast color every 4 rows. This causes all stiches knit (represented in the list <span style="color:blue">graphic</span> by a 1) using the contrast color will appear the same as slipped stiches knit using the main color and vice versa. To visulize this all rows knit using the contrast color (odd indicies of <span style="color:blue">graphic</span>) will need to be changed so that 1 (knit stiches) are changed to 0 and 0 (slipped stitches) are changed to 1.
+Additionally, the pattern switches between the main color and contrast color every 4 rows. This causes all stitches knit (represented in the list <span style="color:blue">graphic</span> by a 1) using the contrast color will appear the same as slipped stitches knit using the main color and vice versa. To visualize this all rows knit using the contrast color (odd indices of <span style="color:blue">graphic</span>) will need to be changed so that 1 (knit stitches) are changed to 0 and 0 (slipped stitches) are changed to 1.
 
 Finally, the 4, all-knit rows will also be added to the list <span style="color:blue">final_graphic</span>.
 
@@ -566,4 +566,4 @@ Coded by: Denise Rauschendorfer (2022)
 
 
 ### __Example of 'knit_mosaic_graphic_pattern.jpg':__
-![](C:/Users/12488/PycharmProjects/pythonProject1/knit_mosaic_graphic_pattern.jpg)
+![]("C:\Users\12488\PycharmProjects\pythonProject1\knit_mosaic_graphic_pattern.jpg")
