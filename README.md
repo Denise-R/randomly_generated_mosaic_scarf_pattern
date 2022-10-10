@@ -244,9 +244,9 @@ f.close()
 ## __Creating a Graphic Pattern__
 
 ### __Section 8:__
-In this section, the stitch pattern produced for each odd row is modified and added to the list <span style="color:blue">final_graphic</span> so that a graphic representation of the repeating rectangular block can be created. To do this every unique stitch that shows up on the final knit scarf in the main color will be represented by a 1, and every unique stitch that shows up in the contrast color will be represented by a 0. 
+In this section, the stitch pattern produced for each odd row is modified and added to the list <span style="color:blue">final_graphic</span> so that a graphic representation of the repeating rectangular block can be created. To do this every unique stitch that shows up on the final knit scarf in the main color will be represented by a 0, and every unique stitch that shows up in the contrast color will be represented by a 1. 
 
-Additionally, the pattern switches between the main color and contrast color every 4 rows. This causes all stitches knit (represented in the list <span style="color:blue">graphic</span> by a 1) using the contrast color will appear the same as slipped stitches knit using the main color and vice versa. To visualize this all rows knit using the contrast color (odd indices of <span style="color:blue">graphic</span>) will need to be changed so that 1 (knit stitches) are changed to 0 and 0 (slipped stitches) are changed to 1.
+Additionally, the pattern switches between the main color and contrast color every 4 rows. This causes all stitches knit (represented in the list <span style="color:blue">graphic</span> by a 0) using the contrast color to appear the same as slipped stitches knit using the main color and vice versa. To visualize this all rows knit using the contrast color (odd indices of <span style="color:blue">graphic</span>) will need to be changed so that 0 (knit stitches) are changed to 1 and 1 (slipped stitches) are changed to 0.
 
 Finally, the 4, all-knit rows will also be added to the list <span style="color:blue">final_graphic</span>.
 
@@ -256,12 +256,12 @@ To accomplish this, the following steps are taken:
 3. A for loop that will iterate through the indices 0-3 of <span style="color:blue">graphic</span> is created.
 4. Within the for loop, an if/else statement is used to affect all even (rows created using the main color) and odd (rows created using the contrast color) indices differently.
 5. For all of the even indices, the corresponding index in <span style="color:blue">graphic</span> and a main color, all-knit row (<span style="color:blue">mc_knit</span>) are added to the list <span style="color:blue">fianl_graphic</span>.
-6. For all the odd indices, all of the values of 1 within the corresponding index in <span style="color:blue">graphic</span> are switched to 0 and vice versa. This new list along with a contrast color all-knit row (<span style="color:blue">mc_knit</span>) are added to the list <span style="color:blue">fianl_graphic</span>.
+6. For all the odd indices, all of the values of 1 within the corresponding index in <span style="color:blue">graphic</span> are switched to 0 and vice versa. This new list along with a contrast color, all-knit row (<span style="color:blue">mc_knit</span>) are added to the list <span style="color:blue">fianl_graphic</span>.
 7. Once this process has repeated for the indices 0-3 of <span style="color:blue">graphic</span>, the for loop is broken.
 
 ```
-mc_knit = [1, 1, 1, 1, 1, 1]
-cc_knit = [0, 0, 0, 0, 0, 0]
+mc_knit = [0, 0, 0, 0, 0, 0]
+cc_knit = [1, 1, 1, 1, 1, 1]
 final_graphic = []
 for i in range(0, 4):
     if i % 2 == 0:
@@ -492,80 +492,10 @@ plt.savefig("knit_mosaic_graphic_pattern.jpg")
 
 ### __Example of the 'knit_mosaic_pattern.txt':__
 ```
-Knit Mosaic Scarf Pattern
-
-This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.
-
-This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.
-There are 16,777,216 different pattern combinations that can be generated from this code!!.
-
-Materials
-	-255 yards worsted yarn (4) for the main color
-	-255 yards worsted yarn (4) for the contrast color
-	-US 8 (5mm) needles
-	-Stitch markers
-	-Tapestry needle
-
-Abbreviations
-	-CC: Contrast Color
-	-CO: Cast on
-	-k: Knit
-	-MC: Main Color
-	-p: purl
-	-pm: Place Marker
-	-pwise: Purlwise
-	-wyib: With Yarn in Back
-	-wyif: With Yarn in Front
-
-Size
-	Creates a 72 by 20 inch rectangular scarf once washed and blocked.
-
-Gauge
-	18 stitches by 24 rows = 4 inch square
-
-Instructions
-	Casting On
-		Using US 8 needles, CO 90 stitches in MC.
-	Repeating Pattern
-		Row 1 (MC): ['3sl', '3k', '3sl', '6k', '3sl'] pm and repeat to end of row.
-				* For all odd rows, slip yarn pwise wyib * 
-		Row 2 (MC): ['3sl', '6p', '3sl', '3p', '3sl'] Repeat.
-				* For all even rows, slip yarn pwise wyif * 
-		Row 3 (MC): ['18k'] Repeat.
-		Row 4 (MC): ['18p'] Repeat.
-		Row 5 (CC): ['3k', '3sl', '12k'] Repeat.
-		Row 6 (CC): ['12p', '3sl', '3p'] Repeat.
-		Row 7 (CC): ['18k'] Repeat.
-		Row 8 (CC): ['18p'] Repeat.
-		Row 9 (MC): ['3sl', '6k', '3sl', '3k', '3sl'] Repeat.
-		Row 10 (MC): ['3sl', '3p', '3sl', '6p', '3sl'] Repeat.
-		Rows 11-12: Repeat rows 3-4.
-		Row 13 (CC): ['3k', '3sl', '6k', '6sl'] Repeat.
-		Row 14 (CC): ['6sl', '6p', '3sl', '3p'] Repeat.
-		Rows 15-16: Repeat rows 7-8. 
-		Rows 17-432: Repeat rows 1-16, 27 times. 
-	Binding Off
-		Step 1: Knit 2 stitches		Step 2: Move those 2 stitches back to the other needle.
-		Step 3: Knit the 2 stitches together
-		Step 4: Knit 1 stitch
-		Step 5: Repeat steps 2-4 until there is only one stitch left.
-		Step 6: Cut your yarn leaving a ~5 inch tail and pull it through the last stitch.
-				This will create a knot and prevent your scarf from unraveling.
-		Step 7: Using the tapestry needle work in all any ends.
-		Step 8: Wash and block you scarf :)
-	Adding Fringe (optional)
-		Step 1: Cut 4, 8 inch strands of yarn
-		Step 2: Holding the 4 strands together, use the crochet hook to pull the center of each
-				strand through a stitch along the bottom/top of the scarf. This will create a loop.
-		Step 3: Pull the fridge ends through the loop, and tighten
-		Step 4: Trim fringe ends to desired length
-		Step 5: Repeat steps 1-4 to add additional fringe wherever desired
-
-Coded by: Denise Rauschendorfer (2022)
+[knit_mosaic_pattern.txt](https://github.com/Denise-R/randomly_generated_mosaic_scarf_pattern/files/9749069/knit_mosaic_pattern.txt)
 ```
 
 
 ### __Example of 'knit_mosaic_graphic_pattern.jpg':__
-![knit_mosaic_graphic_pattern](https://user-images.githubusercontent.com/95630229/194944168-905df5f2-5d87-46a0-9d10-e08ea5eb632d.jpg)
+![knit_mosaic_graphic_pattern](https://user-images.githubusercontent.com/95630229/194947511-65cd7837-4e4e-4a55-96d6-953a6abd0b4c.jpg)
 
-![]("C:\Users\12488\PycharmProjects\pythonProject1\knit_mosaic_graphic_pattern.jpg")
