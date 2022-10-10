@@ -66,7 +66,7 @@ print(odd_row1)
 ### __Section 3:__
 In this section of code, the list created in <span style="color:orange">Section 2</span> named <span style="color:blue">odd_row1</span> is simplified so that consecutive duplicates are grouped together. The number of stitches is then multiplied by 3 to represent the total number of stitches in one row of the repeated rectangular block. 
 
-*Note: one row contains 18 stitches in 6 sections of 3 stitches*
+*Note: one row contains 18 stitches in 6 sections of 3 stitches.*
 
 To accomplish this, the following steps are taken:
 1. A list titled <span style="color:blue">count1</span> is created.
