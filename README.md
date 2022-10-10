@@ -43,7 +43,7 @@ This section of code specifies the type of stitch needed in one row of the repea
 4. The <span style="color:blue">list</span> populated by the for loop is then saved and added to <span style="color:blue">final_graphic</span>. The list <span style="color:blue">final_graphic</span> will be used later in <span style="color:orange">Section 8</span> to make a graphic representation of the repeating rectangular mosaic block.
 5. Another list titled <span style="color:blue">odd_row1</span> is created.
 6. A second for loop is created that repeats for each item within <span style="color:blue">list</span>.
-7. Within this for loop, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, this stitch is arbitrarily determined to be "k" or a knit stitch. Similarly, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, it is "sl" or a slipped stitch. Once this process has repeated for all the items in <span style="color:blue">list</span>, the for loop is broken.
+7. Within this for loop, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 0, this stitch is arbitrarily determined to be "k" or a knit stitch. Similarly, if the i<sup>th</sup> item in <span style="color:blue">list</span> equals 1, it is "sl" or a slipped stitch. Once this process has repeated for all the items in <span style="color:blue">list</span>, the for loop is broken.
 
 ```
 list = []
