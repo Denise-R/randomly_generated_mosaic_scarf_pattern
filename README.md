@@ -566,4 +566,4 @@ Coded by: Denise Rauschendorfer (2022)
 
 
 ### __Example of 'knit_mosaic_graphic_pattern.jpg':__
-![knit_mosaic_graphic_pattern](https://user-images.githubusercontent.com/95630229/194775952-089835af-288b-4cd2-9aad-889227119df5.jpg)
+![knit_mosaic_graphic_pattern](C:\Users\12488\PycharmProjects\pythonProject1\knit_mosaic_graphic_pattern.jpg)
