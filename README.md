@@ -10,7 +10,9 @@ The pattern created will automatically be written into a .txt file titled "<span
 
 The pattern created from executing the following code consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times. A graphical representation of the repeating rectangular block will automatically be created in a .jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
 
-There are 24^2 (576) different pattern combinations that can be generated from this code!!
+There are 2<sup>(6\*4)</sup> = 16,777,216 different pattern combinations that can be generated from this code!!
+
+*Note: The total number of pattern combinations is 16,777,216 because there are 6 unique stitches per row, 4 unique rows per block, and 2 different types of stitches to choose from (knit/purl or slip)*
 
 The following code was executed using Python 3.10. 
 
@@ -19,7 +21,7 @@ The following code was executed using Python 3.10.
 ### __Section 1:__
 In order to create a randomly generated written pattern, the modules '<span style="color:red">random</span>', '<span style="color:red">re</span>', and '<span style="color:red">np</span>' need to be imported. Additionally, the operations '<span style="color:red">pyplot</span>' and '<span style="color:red">colors</span>' in the module '<span style="color:red">matplotlib</span>' are also required. 
 
-This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">Section 5</span>, and are needed for the code in <span style="color:orange">Sections 2-5</span> to run without resulting in an error. The list <span style="color:blue">final_graphic</span> is also created and will be useful in <span style="color:orange">Section 8</span> when creating a graphic representation of the repeating rectangular block. 
+This section of code also includes creating the lists <span style="color:blue">final_even</span> and <span style="color:blue">final_odd</span>. These lists will later be used to save the finished rows created in <span style="color:orange">Section 5</span>, and are needed for the code in <span style="color:orange">Sections 2-5</span> to run without resulting in an error. The list <span style="color:blue">graphic</span> is also created and will be useful in <span style="color:orange">Sections 8-9</span> when creating a graphic representation of the repeating rectangular block. 
 
 ```
 import random
@@ -30,7 +32,7 @@ from matplotlib import colors
 
 final_even=[]
 final_odd=[]
-final_graphic=[]
+graphic=[]
 ```
 
 ### __Section 2:__
@@ -49,7 +51,7 @@ for i in range(0, 6):
     n = random.randrange(0, 2)
     list.append(n)
 print(list)
-final_graphic.append(list)
+graphic.append(list)
 
 odd_row1 = []
 for i in list:
@@ -127,8 +129,11 @@ else:
 
 
 ### __Section 5:__
-The 16 different rows of each rectangular block are also broken up into 4 different sections (16 rows/4 = 4 rows per section) for the pattern to be visually appealing. When knitting on straight needles, every odd row you knit will be the front of the project and every even row will be the back of the project. This means that the same type of stitch (knit, purl, etc.) on an odd row will look different on an even row. This will cause a problem for our pattern when we try to repeat a row 4 times. To correct this, we need to make a front row (odd) and back row (even). Therefore, a front and back row will be repeated twice within each 4 row section of the repeated rectangular block.  
-In <span style="color:orange">Section 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stitch should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 4 row repeated section look uniform. 
+The 16 different rows of each rectangular block are also broken up into 8 different sections (16 rows/8 = 2 rows per section). Of these 8 different row sections, every other row section must contain all knit stitches. These 4, all-knit row sections are necessary because it will prevent stitches from being slipped more times than is physically possible when knitting. As a result, there are only 4 different row sections within each repeating rectangular block that are unique.
+
+When knitting on straight needles, every odd row you knit will be the front of the project and every even row will be the back of the project. This means that the same type of stitch (knit, purl, etc.) on an odd row will look different on an even row. This will cause a problem for our pattern when we try to repeat a row 2 times. To correct this, we need to make a front row (odd) and back row (even). Therefore, one front row and one back row will make up each 2 row section of the repeated rectangular block.  
+
+In <span style="color:orange">Section 4</span>, an odd row was created where 18 stitches were all either knit or slipped purl wise with yarn in back. To make the corresponding even row, every __knit__ stitch should be changed to a __purl__ and every stitch slipped purl wise with yarn in __back__ should be slipped purl wise with yarn in __front__. This will make the 2 rows of each row section in the repeating rectangular block look uniform. 
 
 *Note: Changes in where the yarn is held (front/back) for slipped stitches will be noted only in the .txt file*
 
@@ -158,7 +163,7 @@ final_even.append(con_even_row1)
 
 
 ### __Section 6:__
-To create the 4 different row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">Sections 2-5</span>, 4 times. 
+To create the 4 variable row sections that make up the repeating rectangular block, a for loop is used to repeat all the code in <span style="color:orange">Sections 2-5</span>, 4 times. 
 
 
 ### __Section 7:__
@@ -172,7 +177,7 @@ with open(filename, 'w') as f:
     f.write('Knit Mosaic Scarf Pattern\n\n')
     f.write("This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.\n\n")
     f.write("This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.\n"
-            "There are 24^2 (576) different pattern combinations that can be generated from this code!!.\n\n")
+            "There are 16,777,216 different pattern combinations that can be generated from this code!!\n\n")
     f.write("Materials\n"
             "\t-255 yards worsted yarn (4) for the main color\n"
             "\t-255 yards worsted yarn (4) for the contrast color\n"
@@ -201,17 +206,19 @@ with open(filename, 'w') as f:
             "\t\t\t\t* For all odd rows, slip yarn pwise wyib * \n"
             "\t\tRow 2 (MC): "+str(final_even[0])+" Repeat.\n"
             "\t\t\t\t* For all even rows, slip yarn pwise wyif * \n"
-            "\t\tRows 3-4: Repeat rows 1-2.\n"
+            "\t\tRow 3 (MC): ['18k'] Repeat.\n"
+	    "\t\tRow 4 (MC): ['18p'] Repeat.\n"
             "\t\tRow 5 (CC): "+str(final_odd[1])+" Repeat.\n"
             "\t\tRow 6 (CC): "+str(final_even[1])+" Repeat.\n"
-            "\t\tRows 7-8: Repeat rows 5-6, 2 times\n"
+            "\t\tRow 7 (CC): ['18k'] Repeat.\n"
+	    "\t\tRow 8 (CC): ['18p'] Repeat.\n"
             "\t\tRow 9 (MC): "+str(final_odd[2])+" Repeat.\n"
             "\t\tRow 10 (MC): "+str(final_even[2])+" Repeat.\n"
-            "\t\tRows 11-12: Repeat rows 9-10, 2 times\n"
+            "\t\tRows 11-12: Repeat rows 3-4.\n"
             "\t\tRow 13 (CC): "+str(final_odd[3])+" Repeat.\n"
             "\t\tRow 14 (CC): "+str(final_even[3])+" Repeat.\n"
-            "\t\tRows 15-16: Repeat rows 13-14, 2 times\n"
-            "\t\tRows 17-432: Repeat rows 1-16, 27 times\n"
+            "\t\tRows 15-16: Repeat rows 7-8. \n"
+            "\t\tRows 17-432: Repeat rows 1-16, 27 times. \n"
             "\tBinding Off\n"
             "\t\tStep 1: Knit 2 stitches"
             "\t\tStep 2: Move those 2 stitches back to the other needle.\n"
@@ -237,11 +244,47 @@ f.close()
 ## __Creating a Graphic Pattern__
 
 ### __Section 8:__
+In this section, the stitch pattern produced for each odd row is modified and added to the list <span style="color:blue">final_graphic</span> so that a graphic representation of the repeating rectangular block can be created. To do this every unique stitch that shows up on the final knit scarf in the main color will be represented by a 1, and every unique stitch that shows up in the contrast color will be represented by a 0. 
+
+Additionally, the pattern swiches between the main color and contrast color every 4 rows. This causes all stiches knit (represented in the list <span style="color:blue">graphic</span> by a 1) using the contrast color will appear the same as slipped stiches knit using the main color and vice versa. To visulize this all rows knit using the contrast color (odd indicies of <span style="color:blue">graphic</span>) will need to be changed so that 1 (knit stiches) are changed to 0 and 0 (slipped stitches) are changed to 1.
+
+Finally, the 4, all-knit rows will also be added to the list <span style="color:blue">final_graphic</span>.
+
+To accomplish this, the following steps are taken:
+1. A main color and contrast color, all-knit list is created titled <span style="color:blue">mc_knit</span> and <span style="color:blue">cc_knit</span> respectively.
+2. A list titled <span style="color:blue">fianl_graphic</span> is also created.
+3. A for loop that will iterate through the indices 0-3 of <span style="color:blue">graphic</span> is created.
+4. Within the for loop, an if/else statement is used to affect all even (rows created using the main color) and odd (rows created using the contrast color) indices differently.
+5. For all of the even indices, the corresponding index in <span style="color:blue">graphic</span> and a main color, all-knit row (<span style="color:blue">mc_knit</span>) are added to the list <span style="color:blue">fianl_graphic</span>.
+6. For all the odd indices, all of the values of 1 within the corresponding index in <span style="color:blue">graphic</span> are switched to 0 and vice versa. This new list along with a contrast color all-knit row (<span style="color:blue">mc_knit</span>) are added to the list <span style="color:blue">fianl_graphic</span>.
+7. Once this process has repeated for the indices 0-3 of <span style="color:blue">graphic</span>, the for loop is broken.
+
+```
+mc_knit = [1, 1, 1, 1, 1, 1]
+cc_knit = [0, 0, 0, 0, 0, 0]
+final_graphic = []
+for i in range(0, 4):
+    if i % 2 == 0:
+        final_graphic.append(graphic[i])
+        final_graphic.append(mc_knit)
+    else:
+        flip = []
+        for j in graphic[i]:
+            if j == 0:
+                flip.append(1)
+            else:
+                flip.append(0)
+        final_graphic.append(flip)
+        final_graphic.append(cc_knit)
+```
+
+
+### __Section 9:__
 In this section, a graphic representation of the repeating rectangular block is created and saved as a jpg file titled "<span style="color:blue">knit_mosaic_graphic_pattern.jpg</span>".
 
 To accomplish this, the following steps are taken:
-1. The list <span style="color:blue">final_graphic</span> that contains the 4 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top. *Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf.*
-3. A two-toned, black and white color map named <span style="color:blue">cmap</span> is created. All values of 1 (knit) will be represented by white squares and all the values of 0 (slip) will be represented by black squares.
+1. The list <span style="color:blue">final_graphic</span> that contains the 8 different odd row sections of the repeating rectangular block, is reversed. This step is necessary because the scarf is made from bottom to top. *Note: Because correlating odd and even rows look the same from the front and back, only the odd rows are needed to visualize the front of the scarf.*
+3. A two-toned, red and white color map named <span style="color:blue">cmap</span> is created, where red represents the main color and white represents the contrast color.
 4. Within the color map, <span style="color:blue">cmap</span>, subplots are created to be able to add gridlines.
 5. Black grid lines along the x and y axis are then added to easily visualize each unique stitch (6 unique stitches per row).
 6. The location of the x and y gridlines are then specified. 
@@ -253,12 +296,12 @@ To accomplish this, the following steps are taken:
 ```
 final_graphic.reverse()
 
-cmap = colors.ListedColormap(['white', 'black'])
+cmap = colors.ListedColormap(['red', 'white'])
 
 fig, ax = plt.subplots()
 ax.grid(color='black', linewidth=2)
 ax.set_xticks(np.arange(-0.5, 6, 1))
-ax.set_yticks(np.arange(-0.5, 4, 1))
+ax.set_yticks(np.arange(-0.5, 8, 1))
 ax.set_xticklabels([])
 ax.set_yticklabels([])
 plt.title("Repeating Rectangular Block", fontsize=20, color="black")
@@ -280,14 +323,14 @@ from matplotlib import colors
 
 final_even=[]
 final_odd=[]
-final_graphic=[]
+graphic=[]
 for k in range(4):
     list = []
     for i in range(0, 6):
         n = random.randrange(0, 2)
         list.append(n)
     print(list)
-    final_graphic.append(list)
+    graphic.append(list)
 
     odd_row1 = []
     for i in list:
@@ -349,7 +392,7 @@ with open(filename, 'w') as f:
     f.write('Knit Mosaic Scarf Pattern\n\n')
     f.write("This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.\n\n")
     f.write("This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.\n"
-            "There are 24^2 (576) different pattern combinations that can be generated from this code!!.\n\n")
+            "There are 16,777,216 different pattern combinations that can be generated from this code!!.\n\n")
     f.write("Materials\n"
             "\t-255 yards worsted yarn (4) for the main color\n"
             "\t-255 yards worsted yarn (4) for the contrast color\n"
@@ -378,17 +421,19 @@ with open(filename, 'w') as f:
             "\t\t\t\t* For all odd rows, slip yarn pwise wyib * \n"
             "\t\tRow 2 (MC): "+str(final_even[0])+" Repeat.\n"
             "\t\t\t\t* For all even rows, slip yarn pwise wyif * \n"
-            "\t\tRows 3-4: Repeat rows 1-2.\n"
+            "\t\tRow 3 (MC): ['18k'] Repeat.\n"
+	        "\t\tRow 4 (MC): ['18p'] Repeat.\n"
             "\t\tRow 5 (CC): "+str(final_odd[1])+" Repeat.\n"
             "\t\tRow 6 (CC): "+str(final_even[1])+" Repeat.\n"
-            "\t\tRows 7-8: Repeat rows 5-6, 2 times\n"
+            "\t\tRow 7 (CC): ['18k'] Repeat.\n"
+	        "\t\tRow 8 (CC): ['18p'] Repeat.\n"
             "\t\tRow 9 (MC): "+str(final_odd[2])+" Repeat.\n"
             "\t\tRow 10 (MC): "+str(final_even[2])+" Repeat.\n"
-            "\t\tRows 11-12: Repeat rows 9-10, 2 times\n"
+            "\t\tRows 11-12: Repeat rows 3-4.\n"
             "\t\tRow 13 (CC): "+str(final_odd[3])+" Repeat.\n"
             "\t\tRow 14 (CC): "+str(final_even[3])+" Repeat.\n"
-            "\t\tRows 15-16: Repeat rows 13-14, 2 times\n"
-            "\t\tRows 17-432: Repeat rows 1-16, 27 times\n"
+            "\t\tRows 15-16: Repeat rows 7-8. \n"
+            "\t\tRows 17-432: Repeat rows 1-16, 27 times. \n"
             "\tBinding Off\n"
             "\t\tStep 1: Knit 2 stitches"
             "\t\tStep 2: Move those 2 stitches back to the other needle.\n"
@@ -409,24 +454,39 @@ with open(filename, 'w') as f:
     f.write("Coded by: Denise Rauschendorfer (2022)\n")
 f.close()
 
+mc_knit = [1, 1, 1, 1, 1, 1]
+cc_knit = [0, 0, 0, 0, 0, 0]
+final_graphic = []
+for i in range(0, 4):
+    if i % 2 == 0:
+        final_graphic.append(graphic[i])
+        final_graphic.append(mc_knit)
+    else:
+        flip = []
+        for j in graphic[i]:
+            if j == 0:
+                flip.append(1)
+            else:
+                flip.append(0)
+        final_graphic.append(flip)
+        final_graphic.append(cc_knit)
 
-print(final_graphic)
 final_graphic.reverse()
-print(final_graphic)
 
-cmap = colors.ListedColormap(['white', 'black'])
+cmap = colors.ListedColormap(['red', 'white'])
 
 fig, ax = plt.subplots()
 
 ax.grid(color='black', linewidth=2)
 ax.set_xticks(np.arange(-0.5, 6, 1))
-ax.set_yticks(np.arange(-0.5, 4, 1))
+ax.set_yticks(np.arange(-0.5, 8, 1))
 ax.set_xticklabels([])
 ax.set_yticklabels([])
 plt.title("Repeating Rectangular Block", fontsize=20, color="black")
 
 plt.imshow(final_graphic, cmap=cmap)
 plt.savefig("knit_mosaic_graphic_pattern.jpg")
+
 ```
 
 
@@ -437,7 +497,7 @@ Knit Mosaic Scarf Pattern
 This pattern was inspired by my friend Phia Wilson who designs and makes scarves for fun.
 
 This pattern consists of a randomly generated 4 by 2.6 inch rectangular mosaic block that repeats 135 times.
-There are 24^2 (576) different pattern combinations that can be generated from this code!!.
+There are 16,777,216 different pattern combinations that can be generated from this code!!.
 
 Materials
 	-255 yards worsted yarn (4) for the main color
@@ -467,21 +527,23 @@ Instructions
 	Casting On
 		Using US 8 needles, CO 90 stitches in MC.
 	Repeating Pattern
-		Row 1 (MC): ['3k', '3sl', '3k', '3sl', '6k'] pm and repeat to end of row.
+		Row 1 (MC): ['3sl', '3k', '3sl', '6k', '3sl'] pm and repeat to end of row.
 				* For all odd rows, slip yarn pwise wyib * 
-		Row 2 (MC): ['6p', '3sl', '3p', '3sl', '3p'] Repeat.
+		Row 2 (MC): ['3sl', '6p', '3sl', '3p', '3sl'] Repeat.
 				* For all even rows, slip yarn pwise wyif * 
-		Rows 3-4: Repeat rows 1-2.
-		Row 5 (CC): ['6k', '3sl', '3k', '6sl'] Repeat.
-		Row 6 (CC): ['6sl', '3p', '3sl', '6p'] Repeat.
-		Rows 7-8: Repeat rows 5-6, 2 times
-		Row 9 (MC): ['3sl', '3k', '3sl', '6k', '3sl'] Repeat.
-		Row 10 (MC): ['3sl', '6p', '3sl', '3p', '3sl'] Repeat.
-		Rows 11-12: Repeat rows 9-10, 2 times
-		Row 13 (CC): ['3sl', '9k', '3sl', '3k'] Repeat.
-		Row 14 (CC): ['3p', '3sl', '9p', '3sl'] Repeat.
-		Rows 15-16: Repeat rows 13-14, 2 times
-		Rows 17-432: Repeat rows 1-16, 27 times
+		Row 3 (MC): ['18k'] Repeat.
+		Row 4 (MC): ['18p'] Repeat.
+		Row 5 (CC): ['3k', '3sl', '12k'] Repeat.
+		Row 6 (CC): ['12p', '3sl', '3p'] Repeat.
+		Row 7 (CC): ['18k'] Repeat.
+		Row 8 (CC): ['18p'] Repeat.
+		Row 9 (MC): ['3sl', '6k', '3sl', '3k', '3sl'] Repeat.
+		Row 10 (MC): ['3sl', '3p', '3sl', '6p', '3sl'] Repeat.
+		Rows 11-12: Repeat rows 3-4.
+		Row 13 (CC): ['3k', '3sl', '6k', '6sl'] Repeat.
+		Row 14 (CC): ['6sl', '6p', '3sl', '3p'] Repeat.
+		Rows 15-16: Repeat rows 7-8. 
+		Rows 17-432: Repeat rows 1-16, 27 times. 
 	Binding Off
 		Step 1: Knit 2 stitches		Step 2: Move those 2 stitches back to the other needle.
 		Step 3: Knit the 2 stitches together
